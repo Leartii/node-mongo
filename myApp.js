@@ -18,12 +18,8 @@ const createAndSavePerson = (done) => {
   doc.age = 23;
   doc.favoriteFoods = ["pasta","meat"];
   doc.save((err,data) => {
-    if(err){
-      console.log("Error"+err);
-    }
-    else{
-      console.log("Successful");
-    }
+    if (err) return console.error(err);
+    done(null, data)
   })
   done(null /*, data*/);
  
