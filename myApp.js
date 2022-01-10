@@ -19,12 +19,13 @@ const createAndSavePerson = (done) => {
   doc.favoriteFoods = ["pasta","meat"];
   doc.save((err,data) => {
     if(err){
-      done(err);
+      console.log("Error"+err);
     }
     else{
-      done(null,data);
+      console.log("Successful");
     }
   })
+  done(null /*, data*/);
  
 };
 
