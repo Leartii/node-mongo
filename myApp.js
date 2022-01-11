@@ -43,7 +43,6 @@ const findPeopleByName = (personName, done) => {
     }
     done(null,pers);
   })
-  done(null /*, data*/);
 };
 
 const findOneByFood = (food, done) => {
