@@ -28,10 +28,10 @@ let arrayOfPeople = [{name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish
 const createManyPeople = (arrayOfPeople, done) => {
   Person.create(arrayOfPeople, (err,data) => {
     if(err){
-      return console.error(err);
+      return console.log(err);
     } 
     done(null,data);
-  })
+  });
   
 };
 
