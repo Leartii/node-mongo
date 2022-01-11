@@ -36,7 +36,6 @@ const createManyPeople = (arrayOfPeople, done) => {
   
 };
 
-var personName = "r@nd0mN4m3";
 const findPeopleByName = (personName, done) => {
   Person.find({name : personName}, (err,pers) => {
     if(err){
