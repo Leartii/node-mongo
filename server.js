@@ -85,17 +85,20 @@ const createPerson = require("./myApp.js").createAndSavePerson;
 router.get("/create-and-save-person", function (req, res, next) {
   // in case of incorrect function use wait timeout then respond
   let t = setTimeout(() => {
-    next({ message: "timeout" });
+    console.log("timeout")
+    next({ message: "timeout" }); 
   }, TIMEOUT);
   createPerson(function (err, data) {
     clearTimeout(t);
     if (err) {
+      console.log("error");
       return next(err);
     }
     if (!data) {
       console.log("Missing `done()` argument");
       return next({ message: "Missing callback argument" });
     }
+    console.log("Person found");
     Person.findById(data._id, function (err, pers) {
       if (err) {
         return next(err);
@@ -412,6 +415,8 @@ app.use(function (err, req, res, next) {
 // Unmatched routes handler
 app.use(function (req, res) {
   if (req.method.toLowerCase() === "options") {
+    console.log(req.method.toLowerCase);
+    console.log("Not found on an app");
     res.end();
   } else {
     res.status(404).type("txt").send("Not Found");

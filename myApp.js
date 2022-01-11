@@ -12,14 +12,14 @@ let personSchema = new Schema({
 
 let Person = mongoose.model('Person',personSchema);
 
-const createAndSavePerson = (done) => {
-  console.log("Hit the createAndSavePerson function");
-  const doc = new Person({name : "LeartKR", age : 34, favoriteFoods :["pasta", "chocolate"]});
-  doc.save((err,data) => {
+var createAndSavePerson = function(done) {
+  console.log("Inside the create and save person function");
+  var janeFonda = new Person({name: "Jane Fonda", age: 84, favoriteFoods: ["eggs", "fish", "fresh fruit"]});
+
+  janeFonda.save(function(err, data) {
     if (err) return console.error(err);
     done(null, data)
-  })
-  done(null/*,data*/)
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
