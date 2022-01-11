@@ -1,5 +1,6 @@
 require('dotenv').config();
 const mongoose = require("mongoose");
+const { ignore } = require('nodemon/lib/rules');
 console.log("process.env"+process.env.MONGO_URI);
 
 mongoose.connect(process.env.MONGO_URI,{ useNewUrlParser: true, useUnifiedTopology: true });
@@ -36,6 +37,12 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
+  Person.find({name : personName}, (err,pers) => {
+    if(err){
+      return console.log(err);
+    }
+    done(null,pers);
+  })
   done(null /*, data*/);
 };
 
